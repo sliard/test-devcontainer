@@ -21,10 +21,11 @@
     "features": {
         "docker-in-docker": "latest"
     },
-    "forwardPorts": [80, 3306],
+    "forwardPorts": [80, 8000, 3306],
 	"remoteUser": "sail",
     "initializeCommand": "mkdir -p ${env:HOME}/.m2 ${env:HOME}/.gradle",
 	"postCreateCommand": [
-        "chown -R 1000:1000 /var/www/html 2>/dev/null || true"
+        "chown -R 1000:1000 /var/www/html 2>/dev/null || true",
+        'composer update'
     ],
 }
