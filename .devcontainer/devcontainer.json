@@ -1,6 +1,6 @@
 // https://aka.ms/devcontainer.json
 {
-	"name": "Existing Docker Compose (Extend)",
+	"name": "Test Laravel",
 	"dockerComposeFile": [
 		"../docker-compose.yml"
 	],
@@ -18,7 +18,12 @@
 			"settings": {}
 		}
 	},
+    "features": {
+        "docker-in-docker": "latest"
+    },
+    "forwardPorts": [80, 3306],
 	"remoteUser": "sail",
+    "initializeCommand": "mkdir -p ${env:HOME}/.m2 ${env:HOME}/.gradle",
 	"postCreateCommand": [
         "chown -R 1000:1000 /var/www/html 2>/dev/null || true"
     ],
