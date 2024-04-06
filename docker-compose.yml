@@ -1,10 +1,11 @@
 services:
     laravel.test:
+        env_file: ./.env.initenv
         build:
             context: ./docker/runtimes/8.3
             dockerfile: Dockerfile
             args:
-                WWWGROUP: '${WWWGROUP:-sailt}'
+                WWWGROUP: '${WWWGROUP}'
         image: sail-8.3/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
@@ -12,7 +13,7 @@ services:
             - '${APP_PORT:-80}:80'
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         environment:
-            WWWUSER: '${WWWUSER:-sailt}'
+            WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
@@ -25,6 +26,7 @@ services:
             - mysql
             - redis
     mysql:
+        env_file: ./.env.initenv
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'

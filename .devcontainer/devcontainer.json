@@ -19,9 +19,6 @@
 		}
 	},
 	"remoteUser": "sail",
-    "initializeCommand": [
-        "cp .env.example .env"
-    ],
 	"postCreateCommand": [
         "chown -R 1000:1000 /var/www/html 2>/dev/null || true"
     ],
